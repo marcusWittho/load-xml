@@ -39,7 +39,7 @@ public class BcMsgService {
           null
       );
 
-      GrupoSeq grupoSeq = grupoSeqService.buildGrupoService(bcMsgElement, bcMsgInstance);
+      GrupoSeq grupoSeq = grupoSeqService.buildGrupoSeq(bcMsgElement, bcMsgInstance);
       bcMsgInstance.setGrupoSeq(grupoSeq);
 
       bcMsgRepository.save(bcMsgInstance);

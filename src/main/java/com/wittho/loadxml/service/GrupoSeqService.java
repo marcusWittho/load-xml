@@ -16,7 +16,7 @@ public class GrupoSeqService {
     this.grupoSeqRepository = grupoSeqRepository;
   }
 
-  public GrupoSeq buildGrupoService(Element bcMsgElement, BcMsg bcMsg) {
+  public GrupoSeq buildGrupoSeq(Element bcMsgElement, BcMsg bcMsg) {
 
     NodeList grupoSeq = bcMsgElement.getElementsByTagName("Grupo_Seq");
 
