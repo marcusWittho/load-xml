@@ -2,19 +2,12 @@ package com.wittho.loadxml.service;
 
 import com.wittho.loadxml.model.BcMsg;
 import com.wittho.loadxml.model.GrupoSeq;
-import com.wittho.loadxml.repository.GrupoSeqRepository;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 @Service
 public class GrupoSeqService {
-
-  private final GrupoSeqRepository grupoSeqRepository;
-
-  public GrupoSeqService(GrupoSeqRepository grupoSeqRepository) {
-    this.grupoSeqRepository = grupoSeqRepository;
-  }
 
   public GrupoSeq buildGrupoSeq(Element bcMsgElement, BcMsg bcMsg) {
 
