@@ -1,11 +1,14 @@
 package com.wittho.loadxml.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -45,6 +48,11 @@ public class LiquidProdt {
 
   @Column(name = "tp_transc_slc")
   private String tpTranscSLC;
+
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(name = "prodt_id")
+  private Prodt prodt;
 
   public static LiquidProdt createLiquidProdtInstance(
       String identdLinhaBilat,
@@ -156,5 +164,13 @@ public class LiquidProdt {
 
   public void setTpTranscSLC(String tpTranscSLC) {
     this.tpTranscSLC = tpTranscSLC;
+  }
+
+  public Prodt getProdt() {
+    return prodt;
+  }
+
+  public void setProdt(Prodt prodt) {
+    this.prodt = prodt;
   }
 }

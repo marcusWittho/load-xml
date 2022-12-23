@@ -9,29 +9,26 @@ import org.w3c.dom.NodeList;
 @Service
 public class LiquidProdtService {
 
-  public LiquidProdt buildLiquidProdt(Prodt prodt, Element element) {
-    NodeList liquidProdtElement = element.getElementsByTagName("Grupo_SLC0001_LiquidProdt");
-    LiquidProdt newLiquidProdt = null;
+  public void buildLiquidProdt(Prodt prodt, Element prodtElement) {
+    NodeList liquidProdtElement = prodtElement.getElementsByTagName("Grupo_SLC0001_LiquidProdt");
 
     for (short i = 0; i < liquidProdtElement.getLength(); i++) {
-      newLiquidProdt = LiquidProdt.createLiquidProdtInstance(
-          element.getElementsByTagName("IdentdLinhaBilat").item(i).getTextContent(),
-          element.getElementsByTagName("TpDeb_Cred").item(i).getTextContent(),
-          element.getElementsByTagName("ISPBIFCredtd").item(i).getTextContent(),
-          element.getElementsByTagName("ISPBIFDebtd").item(i).getTextContent(),
+      LiquidProdt newLiquidProdt = LiquidProdt.createLiquidProdtInstance(
+          prodtElement.getElementsByTagName("IdentdLinhaBilat").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("TpDeb_Cred").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("ISPBIFCredtd").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("ISPBIFDebtd").item(i).getTextContent(),
           Double.parseDouble(
-              element.getElementsByTagName("VlrLanc").item(i).getTextContent()),
-          element.getElementsByTagName("CNPJNLiqdantDebtd").item(i).getTextContent(),
-          element.getElementsByTagName("NomCliDebtd").item(i).getTextContent(),
-          element.getElementsByTagName("CNPJNLiqdantCredtd").item(i).getTextContent(),
-          element.getElementsByTagName("NomCliCredtd").item(i).getTextContent(),
-          element.getElementsByTagName("TpTranscSLC").item(i).getTextContent()
+              prodtElement.getElementsByTagName("VlrLanc").item(i).getTextContent()),
+          prodtElement.getElementsByTagName("CNPJNLiqdantDebtd").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("NomCliDebtd").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("CNPJNLiqdantCredtd").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("NomCliCredtd").item(i).getTextContent(),
+          prodtElement.getElementsByTagName("TpTranscSLC").item(i).getTextContent()
       );
 
       newLiquidProdt.setProdt(prodt);
       prodt.addLiquidProdt(newLiquidProdt);
     }
-
-    return newLiquidProdt;
   }
 }
