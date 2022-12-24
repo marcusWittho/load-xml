@@ -21,7 +21,7 @@ public class Slc0001Service {
     this.slc0001Repository = slc0001Repository;
   }
 
-  public void buildSlc() {
+  public String buildSlc() {
     Document doc = readXmlService.docContent();
     NodeList slc0001 = doc.getElementsByTagName("SLC0001");
 
@@ -39,5 +39,7 @@ public class Slc0001Service {
     liquidService.buildLiquid(slcElement, slc);
 
     slc0001Repository.save(slc);
+
+    return "SisMsg carregado com sucesso.";
   }
 }
