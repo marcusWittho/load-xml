@@ -7,10 +7,7 @@ contidas em um determinado arquivo .xml e disponibilizar essas informações em 
 
     ```
     // clonar o repositório e acessar a raiz do projeto
-    git clone git@github.com:marcusWittho/Zallpy.git
-
-    // executar os testes unitários
-    ./gradlew test
+    git clone git@github.com:marcusWittho/load-xml.git
 
     // subir o projeto localmente:
     // comentar a linha 2 do arquivo application.properties
