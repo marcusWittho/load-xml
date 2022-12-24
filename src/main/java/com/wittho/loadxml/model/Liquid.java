@@ -1,5 +1,6 @@
 package com.wittho.loadxml.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,6 +33,11 @@ public class Liquid {
   @OneToMany(mappedBy = "liquid", fetch = FetchType.LAZY,
       cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Prodt> prodtList;
+
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(name = "slc0001_id")
+  private Slc0001 slc0001;
 
   public static Liquid createLiquidInstance(String dtLiquid, String numSeqCicloLiquid) {
     Liquid liquid = new Liquid();
@@ -71,5 +79,13 @@ public class Liquid {
 
   public void addProdt(Prodt prodt) {
     this.prodtList.add(prodt);
+  }
+
+  public Slc0001 getSlc0001() {
+    return slc0001;
+  }
+
+  public void setSlc0001(Slc0001 slc0001) {
+    this.slc0001 = slc0001;
   }
 }
