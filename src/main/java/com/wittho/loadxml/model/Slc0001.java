@@ -12,12 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "slc0001")
 public class Slc0001 {
 
   @Id
+  @Type(type = "uuid-char")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID id;
 

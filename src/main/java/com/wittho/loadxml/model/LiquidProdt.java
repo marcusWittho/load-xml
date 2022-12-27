@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "liquid_prodt")
 public class LiquidProdt {
 
   @Id
+  @Type(type = "uuid-char")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID id;
 

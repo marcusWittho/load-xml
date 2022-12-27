@@ -10,12 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "bc_msg")
 public class BcMsg {
 
   @Id
+  @Type(type = "uuid-char")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID id;
 
@@ -31,19 +33,18 @@ public class BcMsg {
   @Column(name = "nu_op")
   private String nuOp;
 
-  @OneToOne(mappedBy = "bcMsg", fetch = FetchType.LAZY,
+  @OneToOne(mappedBy = "bcMsg", fetch = FetchType.EAGER,
       cascade = CascadeType.ALL, orphanRemoval = true)
   private GrupoSeq grupoSeq;
 
   public static BcMsg createBcMsgInstance(String identdEmissor, String identdDestinatario,
-      String domSist, String nuOp, GrupoSeq grupoSeq) {
+      String domSist, String nuOp) {
     BcMsg bcMsg = new BcMsg();
 
     bcMsg.setIdentdEmissor(identdEmissor);
     bcMsg.setIdentdDestinatario(identdDestinatario);
     bcMsg.setDomSist(domSist);
     bcMsg.setNuOp(nuOp);
-    bcMsg.setGrupoSeq(grupoSeq);
 
     return bcMsg;
   }

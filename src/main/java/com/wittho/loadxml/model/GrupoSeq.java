@@ -12,12 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "grupo_seq")
 public class GrupoSeq {
 
   @Id
+  @Type(type = "uuid-char")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private UUID id;
 
