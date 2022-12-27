@@ -71,7 +71,7 @@ public class BcMsgService {
     Optional<BcMsg> bcMsg = bcMsgRepository.findById(UUID.fromString(id));
 
     if (bcMsg.isEmpty()) {
-      throw new NotFoundException(String.format("Não foi encontrado registro com o id %s.", id));
+      throw new NotFoundException(String.format("Registro com o id %s inexistente.", id));
     }
 
     return bcMsg.get();

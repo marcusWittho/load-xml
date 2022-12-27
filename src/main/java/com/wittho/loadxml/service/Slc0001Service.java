@@ -1,7 +1,11 @@
 package com.wittho.loadxml.service;
 
+import com.wittho.loadxml.commons.NotFoundException;
 import com.wittho.loadxml.model.Slc0001;
 import com.wittho.loadxml.repository.Slc0001Repository;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -41,5 +45,27 @@ public class Slc0001Service {
     slc0001Repository.save(slc);
 
     return "SisMsg carregado com sucesso.";
+  }
+
+  public List<Slc0001> getAll() {
+
+    List<Slc0001> slc = slc0001Repository.findAll();
+
+    if (slc.isEmpty()) {
+      throw new NotFoundException("Nenhum Slc0001 foi encontrado.");
+    }
+
+    return slc;
+  }
+
+  public Slc0001 getById(String id) {
+
+    Optional<Slc0001> slc = slc0001Repository.findById(UUID.fromString(id));
+
+    if (slc.isEmpty()) {
+      throw new NotFoundException(String.format("Registro com o id %s inexistente.", id));
+    }
+
+    return slc.get();
   }
 }
